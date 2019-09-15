@@ -8,7 +8,7 @@ app = Flask(__name__)
 def predict():
     if clf:
         try:
-            train3 = pd.DataFrame(request.json) #getting first input
+            train3 = pd.DataFrame(request.get_json(force=True)) #getting first input
             #item_log=json2_.merge(json1_,how='left',on='item_id') #merging items and log
             #train3=json_.merge(query,how='left',on='user_id') # merging items,log anf train
             colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
