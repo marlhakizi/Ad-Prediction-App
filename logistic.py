@@ -7,13 +7,13 @@ import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 import os
 #get_ipython().run_line_magic('matplotlib', 'inline')
-f=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/train.csv')
-g=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/item_data.csv')
-s=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/view_log.csv')
+#f=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/train.csv')
+#g=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/item_data.csv')
+#s=open('/Users/marlynehakizimana/Downloads/train_NA17Sgz/view_log.csv')
 #First 10 rows
-train=pd.read_csv(f,sep=',')
-items=pd.read_csv(g,sep=',')
-log=pd.read_csv(s,sep=',')
+train=pd.read_csv('train.csv',sep=',')
+items=pd.read_csv('item_dat.csv',sep=',')
+log=pd.read_csv('logs.csv',sep=',')
 
 
 
