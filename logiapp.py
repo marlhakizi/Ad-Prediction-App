@@ -68,7 +68,7 @@ def predic():
     ensemble1=ensemble[rtrt].fillna(0)
 
 
-    prediction = clf.predict(ensemble1)
+    prediction = clf.predict(ensemble1.values)
 
     output = prediction
     if output == 1:
@@ -137,7 +137,7 @@ def predict():
 
 
 
-            prediction = list(clf.predict(ensemble1.values))
+            prediction = list(clf.predict(ensemble1))
             prediction_str=[str(i) for i in prediction]
 
             return jsonify({'is_click': prediction_str})
