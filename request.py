@@ -1,7 +1,7 @@
 import requests
 
-url = 'http://localhost:5000/predict'
-#url='http://127.0.0.1:12344/predict'
+#url = 'http://localhost:5000/predict'
+url='http://127.0.0.1:5000/predict'
 ok={
 		"impression_id":"c4ca4238a0b923820dcc509a6f75849b", "impression_time":4,"user_id":3,
 		"app_code":4, "os_version":"old","is_4G":5,"is_click":5,"server_time":6, "device_type":"android", "session_id":7,
