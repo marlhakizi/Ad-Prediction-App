@@ -1,14 +1,16 @@
-from flask import Flask, request, jsonify
+from from flask import Flask, request, jsonify
 from sklearn.externals import joblib
 import traceback
 import pandas as pd
 import numpy as np
 app = Flask(__name__)
+clf = joblib.load('logistic.pkl')
 @app.route('/predict', methods=['POST']) # Your API endpoint URL would consist /predict
 def predict():
-    if clf:
-        try:
+            #rr=request.json
+            #tr=pd.read_json(rr)
             train3 = pd.DataFrame(request.get_json(force=True)) #getting first input
+            #train3=pd.read_json(rr)
             #item_log=json2_.merge(json1_,how='left',on='item_id') #merging items and log
             #train3=json_.merge(query,how='left',on='user_id') # merging items,log anf train
             colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
@@ -60,21 +62,7 @@ def predict():
             prediction_str=[str(i) for i in prediction]
 
             return jsonify({'is_click': prediction_str})
-
-        except:
-
-            return jsonify({'trace': traceback.format_exc()})
-    else:
-        print ('Train the model first')
-        return ('No model here to use')
 if __name__ == '__main__':
-
-    try:
-        port = int(sys.argv[1]) # This is for a command-line argument
-    except:
-        port = 12344 # If you don't provide any port then the port will be set to 12345
-    clf = joblib.load('logistic.pkl') # Load "logistic.pkl"
-    print ('Model loaded')
-    model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
-    print ('Model columns loaded')
-    app.run(port=port, debug=True)
+    #model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
+    #print ('Model columns loaded')
+    app.run(debug=True)
