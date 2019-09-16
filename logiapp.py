@@ -137,7 +137,7 @@ def predict():
 
 
 
-            prediction = list(clf.predict(ensemble1))
+            prediction = list(clf.predict(ensemble1.values))
             prediction_str=[str(i) for i in prediction]
 
             return jsonify({'is_click': prediction_str})
