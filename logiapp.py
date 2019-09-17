@@ -68,7 +68,7 @@ def predic():
     ensemble1=ensemble[rtrt].fillna(0)
 
 
-    prediction = clf.predict(list(ensemble1.values))
+    prediction = list(clf.predict(ensemble1))
 
     output = prediction
     if output == 1:
