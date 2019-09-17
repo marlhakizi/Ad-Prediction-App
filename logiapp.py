@@ -69,14 +69,15 @@ def predic():
 
 
     prediction = list(clf.predict(ensemble1))
+    res=[str(i) for i in prediction]
 
-    output = prediction
-    if output == 1:
-        res = "(Ad not clicked)"
-    else:
-        res = "(Ad clicked)"
+  #  output = prediction
+ #   if output == 1:
+ #       res = "(Ad not clicked)"
+ #   else:
+#        res = "(Ad clicked)"
 
-    return render_template('index.html', prediction_text='The predicted result is: {} '.format(output)+res)
+    return render_template('index.html', prediction=res)
 
 
 
