@@ -25,8 +25,8 @@ def predic():
         matching[i]=k
     train3=pd.DataFrame.from_dict([matching])
     colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
-    alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
-
+    #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
+    alltrain=train3[colcol]
     cat_agg=['count','nunique']
     num_agg=['min','mean','max','sum']
     agg_col={'server_time':'nunique',
