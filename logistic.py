@@ -34,8 +34,6 @@ agg_col={'server_time':'nunique',
 for k in train3.columns:
     if k.startswith('category_1') or k.startswith('category_2'):
         agg_col[k]=['sum','mean']
-    elif k.startswith('server'):
-        agg_col[k]=cat_agg
     elif k.startswith('cumcount'):
         agg_col[k]=num_agg
 
