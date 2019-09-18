@@ -26,7 +26,7 @@ def predic():
     train3=pd.DataFrame.from_dict([matching])
     colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
     #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
-    alltrain=train3.reindex(columns=colcol)
+    alltrain=train3.reindex(columns=colui)
     cat_agg=['count','nunique']
     num_agg=['min','mean','max','sum']
     agg_col={'server_time':'nunique',
@@ -37,7 +37,7 @@ def predic():
     for k in train3.columns:
         if k.startswith('category_1') or k.startswith('category_2'):
             agg_col[k]=['sum','mean']
-        elif k.startswith('server_time'):
+        elif k.startswith('server'):
             agg_col[k]=cat_agg
         elif k.startswith('cumcount'):
             agg_col[k]=num_agg
