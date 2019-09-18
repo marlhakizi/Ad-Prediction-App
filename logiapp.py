@@ -41,9 +41,12 @@ def predic():
             agg_col[k]=num_agg
 
 
-    untrain=train3.groupby('impression_id').agg(agg_col)
+    #untrain=train3.groupby('impression_id').agg(agg_col)
     #untrain=train3
-    untrain.columns=['J_' + '_'.join(col).strip() for col in untrain.columns.values]
+    untrain=train3.groupby('impression_id').agg({'server_time':'nunique',
+    'session_id':'nunique','item_price':'mean',
+       'category_3':'mean', 'product_type':'mean','category_1':'mean','category_2':'mean'})
+    #untrain.columns=['J_' + '_'.join(col).strip() for col in untrain.columns.values]
     on=untrain.reset_index()
     allallu=on.merge(alltrain,how='left',on='impression_id')
 
