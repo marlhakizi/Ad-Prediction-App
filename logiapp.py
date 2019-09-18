@@ -37,7 +37,7 @@ def predic():
     for k in train3.columns:
         if k.startswith('category_1') or k.startswith('category_2'):
             agg_col[k]=['sum','mean']
-        elif k.startswith('server'):
+        elif k.startswith('server_time'):
             agg_col[k]=cat_agg
         elif k.startswith('cumcount'):
             agg_col[k]=num_agg
