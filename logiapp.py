@@ -44,9 +44,9 @@ def predic():
     #untrain=train3.groupby('impression_id').agg(agg_col)
     #untrain=train3
     untrain=train3.groupby('impression_id').agg({'session_id':'nunique','item_price':'mean',
-       'category_3':'mean', 'product_type':'mean','category_1':'mean','category_2':'mean'})
+       'category_3':'mean', 'product_type':'mean','category_1':'mean','category_2':'mean'}).reset_index()
     #untrain.columns=['J_' + '_'.join(col).strip() for col in untrain.columns.values]
-    on=untrain.reset_index()
+    on=untrain
     allallu=on.merge(alltrain,how='left',on='impression_id')
 
 
@@ -111,6 +111,7 @@ def predict():
                     agg_col[k]=cat_agg
                 elif k.startswith('cumcount'):
                     agg_col[k]=num_agg
+    
 
 
             untrain=train3.groupby('impression_id').agg(agg_col)
