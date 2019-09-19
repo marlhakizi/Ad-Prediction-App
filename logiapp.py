@@ -1,3 +1,10 @@
+#I am keeping it on very simple values where once we have more time, one could add a csv file
+#right now we have single values we can enter one at a time. but because it
+#but we can't really do aggregations with only one single values.
+#somehow, aggreagation is the key part
+#show rest api
+
+
 from flask import Flask, request, jsonify, render_template
 from sklearn.externals import joblib
 import traceback
@@ -18,47 +25,17 @@ def predic():
     #3
     int_features = [int(x) for x in request.form.values()]
     feat = [np.array(int_features)]
-    colui=['impression_id','impression_time','user_id','app_code','os_version','is_4G',
-    'is_click','server_time','device_type','session_id','item_id','item_price','category_1'
-    'category_2','category_3','product_type']
-    matching={}
-    for i,k in zip(colui,feat):
-        matching[i]=k
-    train3=pd.DataFrame.from_dict([matching])
-    colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
-    #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
-    alltrain=train3.reindex(columns=colcol)
-    allallu=alltrain#.merge(alltrain,how='left',on='impression_id')
-
-    allallu.loc[:,'impression_time']=pd.to_datetime(allallu['impression_time'])
-    allallu['Hour']=allallu.loc[:,'impression_time'].dt.hour
-    allallu['Day']=allallu.loc[:,'impression_time'].dt.day
-
-
-    allallu['newHour']=pd.cut(allallu.Hour,bins=[0,6,12,17,23],labels=['Early','Morning','Afternoon','Night'],include_lowest=True)
-
-
-    hou=pd.get_dummies(allallu.newHour)
-    ensemble=pd.concat([allallu,hou],axis=1)
-
-
-    rty=['impression_id', 'item_id','impression_time','user_id','Hour','os_version',
-    'server_time_y', 'impression_id_y','newHour']
-
-    rtrt=[i for i in ensemble.columns if i not in rty]
-    ensemble1=ensemble[rtrt].fillna(0)
-
-    
+ 
            
 
 
     
-    #prediction = clf.predict(feat)
-    prediction = clf.predict(ensemble1)
+    prediction = clf.predict(feat)
+ 
     output = round(prediction[0], 2)
     #res=[str(i) for i in prediction]
 
-    return render_template('index.html', prediction_text='Ad-click probability should be $ {}'.format(output))
+    return render_template('index.html', prediction_text='Ad-click prediction is  {}'.format(output))
 
 
 
