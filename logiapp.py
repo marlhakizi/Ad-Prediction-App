@@ -17,10 +17,11 @@ def predic():
     '''
     int_features = [int(x) for x in request.form.values()]
     feat = [np.array(int_features)]
-    prediction = list(clf.predict(feat))
-    res=[str(i) for i in prediction]
+    prediction = clf.predict(feat)
+    output = round(prediction[0], 2)
+    #res=[str(i) for i in prediction]
 
-    return render_template('index.html', prediction=res)
+    return render_template('index.html', prediction=output)
 
 
 
