@@ -21,7 +21,7 @@ def predic():
     output = round(prediction[0], 2)
     #res=[str(i) for i in prediction]
 
-    return render_template('index.html', prediction=output)
+    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
 
 
 
