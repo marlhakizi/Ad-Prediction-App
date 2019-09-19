@@ -2,7 +2,8 @@
 #right now we have single values we can enter one at a time. but because it
 #but we can't really do aggregations with only one single values.
 #somehow, aggreagation is the key part
-#show rest api
+#show rest api with the model,request,requirements
+#a lot to improve but next lets try to upload a file
 
 
 from flask import Flask, request, jsonify, render_template
