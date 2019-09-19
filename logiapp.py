@@ -17,6 +17,16 @@ def predic():
     '''
     int_features = [int(x) for x in request.form.values()]
     feat = [np.array(int_features)]
+    colui=['impression_id','impression_time','user_id','app_code','os_version','is_4G',
+    'is_click','server_time','device_type','session_id','item_id','item_price','category_1'
+    'category_2','category_3','product_type']
+    matching={}
+    for i,k in zip(colui,feat):
+        matching[i]=k
+    train3=pd.DataFrame.from_dict([matching])
+    colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
+    #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
+    alltrain=train3.reindex(columns=colui)
     prediction = clf.predict(feat)
     output = round(prediction[0], 2)
     #res=[str(i) for i in prediction]
