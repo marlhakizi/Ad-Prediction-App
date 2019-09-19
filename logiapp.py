@@ -15,6 +15,7 @@ def predic():
     '''
     For rendering results on HTML GUI
     '''
+    #3
     int_features = [int(x) for x in request.form.values()]
     feat = [np.array(int_features)]
     colui=['impression_id','impression_time','user_id','app_code','os_version','is_4G',
