@@ -27,8 +27,37 @@ def predic():
     train3=pd.DataFrame.from_dict([matching])
     colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
     #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
-    alltrain=train3.reindex(columns=colui)
-    prediction = clf.predict(feat)
+    alltrain=train3.reindex(columns=colcol)
+    untrain=train3.groupby('impression_id').agg({'session_id':['nunique'],'item_price':'mean',
+    'category_3':'mean', 'product_type':'mean','category_1':'mean','category_2':'mean'}).reset_index()
+    on=untrain
+    allallu=on.merge(alltrain,how='left',on='impression_id')
+
+    allallu.loc[:,'impression_time']=pd.to_datetime(allallu['impression_time'])
+    allallu['Hour']=allallu.loc[:,'impression_time'].dt.hour
+    allallu['Day']=allallu.loc[:,'impression_time'].dt.day
+
+
+    allallu['newHour']=pd.cut(allallu.Hour,bins=[0,6,12,17,23],labels=['Early','Morning','Afternoon','Night'],include_lowest=True)
+
+
+    hou=pd.get_dummies(allallu.newHour)
+    ensemble=pd.concat([allallu,hou],axis=1)
+
+
+    rty=['impression_id', 'item_id','impression_time','user_id','Hour','os_version',
+    'server_time_y', 'impression_id_y','newHour']
+
+    rtrt=[i for i in ensemble.columns if i not in rty]
+    ensemble1=ensemble[rtrt].fillna(0)
+
+    
+           
+
+
+    
+    #prediction = clf.predict(feat)
+    prediction = clf.predict(ensemble1)
     output = round(prediction[0], 2)
     #res=[str(i) for i in prediction]
 
