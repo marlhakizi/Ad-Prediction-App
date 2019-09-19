@@ -17,14 +17,7 @@ def predic():
     '''
     int_features = [int(x) for x in request.form.values()]
     feat = [np.array(int_features)]
-    colui=['impression_id','product_type']
-    matching={}
-    for i,k in zip(colui,feat):
-        matching[i]=k
-    train3=pd.DataFrame.from_dict([matching])
-
-
-    prediction = list(clf.predict(train3))
+    prediction = list(clf.predict(feat))
     res=[str(i) for i in prediction]
 
     return render_template('index.html', prediction=res)
