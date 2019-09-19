@@ -28,10 +28,7 @@ def predic():
     colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
     #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
     alltrain=train3.reindex(columns=colcol)
-    untrain=train3.groupby('impression_id').agg({'session_id':['nunique'],'item_price':'mean',
-    'category_3':'mean', 'product_type':'mean','category_1':'mean','category_2':'mean'}).reset_index()
-    on=untrain
-    allallu=on.merge(alltrain,how='left',on='impression_id')
+    allallu=alltrain.merge(alltrain,how='left',on='impression_id')
 
     allallu.loc[:,'impression_time']=pd.to_datetime(allallu['impression_time'])
     allallu['Hour']=allallu.loc[:,'impression_time'].dt.hour
