@@ -28,7 +28,7 @@ def predic():
     colcol=['impression_id', 'impression_time','user_id', 'app_code', 'os_version','is_4G']
     #alltrain=train3.reindex(columns=colcol, fill_value=0).drop_duplicates()
     alltrain=train3.reindex(columns=colcol)
-    allallu=alltrain.merge(alltrain,how='left',on='impression_id')
+    allallu=alltrain#.merge(alltrain,how='left',on='impression_id')
 
     allallu.loc[:,'impression_time']=pd.to_datetime(allallu['impression_time'])
     allallu['Hour']=allallu.loc[:,'impression_time'].dt.hour
