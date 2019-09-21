@@ -119,6 +119,5 @@ def predict():
     else:
         print ('Train the model first')
         return ('No model here to use')
-
- if __name__ == '__main__':
+if __name__ == '__main__':
     app.run(debug=True)
