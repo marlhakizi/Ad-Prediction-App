@@ -5,6 +5,11 @@ import pandas as pd
 import numpy as np
 app = Flask(__name__)
 clf = joblib.load('logistic.pkl')
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/upload', methods=['GET', 'POST'])# Your API endpoint URL would consist /predict
 def upload():
     if request.method == 'POST':
