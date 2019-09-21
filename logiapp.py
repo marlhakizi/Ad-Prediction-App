@@ -10,7 +10,7 @@ clf = joblib.load('logistic.pkl')
 #def home():
 #    return render_template('index.html')
 
-@app.route('/', methods=['GET', 'POST'])# Your API endpoint URL would consist /predict
+@app.route('/upload', methods=['GET', 'POST'])# Your API endpoint URL would consist /predict
 def upload():
     if request.method == 'POST':
         train3 = pd.read_csv(request.files.get('file'))
