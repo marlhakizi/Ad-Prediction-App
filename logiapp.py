@@ -61,7 +61,7 @@ def upload():
         prediction = clf.predict(ensemble1)
 
         return render_template('index.html', r=prediction)
-    return render_template('index.html')
+    #return render_template('index.html')
 
 @app.route('/predict', methods=['POST']) # Your API endpoint URL would consist /predict
 def predict():
