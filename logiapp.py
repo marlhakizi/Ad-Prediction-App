@@ -9,7 +9,7 @@ clf = joblib.load('logistic.pkl')
 #@app.route('/')
 #def home():
 #    return render_template('index.html')
-
+#finalcode
 @app.route('/', methods=['GET', 'POST'])# Your API endpoint URL would consist /predict
 def upload():
     if request.method == 'POST':
