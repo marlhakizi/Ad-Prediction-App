@@ -1,6 +1,5 @@
 import requests
 
-#url = 'http://localhost:5000/predict'
 url='http://127.0.0.1:5000/predict'
 ok={
 		"impression_id":"c4ca4238a0b923820dcc509a6f75849b", "impression_time":4,"user_id":3,
