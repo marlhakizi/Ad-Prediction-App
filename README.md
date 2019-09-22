@@ -1,8 +1,9 @@
 # Using Heroku to deploy an ML Predictive Model
 
 In this repository:
--I create a web app by deploying a predictive model on Heroku using Flask.The web page asks the user to upload a file and once submitted, it predicts whether a customer will click on an Advertisement or not.
--I added documents that make a flask API by entering a json input
+* I create a web app by deploying a predictive model on Heroku using Flask.The web page asks the user to upload a file and once submitted, it predicts whether a customer will click on an Advertisement or not.
+
+* I added documents that make a flask API by entering a json input
 
 
 
