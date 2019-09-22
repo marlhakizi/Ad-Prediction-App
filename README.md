@@ -9,5 +9,5 @@ In this repository:
 
 
 # Improvements
--to create a csv file output instead of an array
--add css styles for a better presentation
+* to create a csv file output instead of an array
+* add css styles for a better presentation
